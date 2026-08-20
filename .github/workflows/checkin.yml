@@ -2,7 +2,7 @@ name: iKuuu Checkin
 
 on:
   schedule:
-    - cron: "0 16 * * *"
+    - cron: "05 16 * * *"
   workflow_dispatch:
 
 env:
@@ -11,19 +11,19 @@ env:
 
 jobs:
   checkin:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       issues: write
       actions: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
       - name: Cache pip packages
         uses: actions/cache@v4
